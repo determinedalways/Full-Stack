@@ -17,7 +17,7 @@ export const addUser = (req,res) => {
         req.body.nome,
         req.body.email,
         req.body.fone,
-        req.body.data_nascimento,
+        req.body.data_nacimento,
     ];
 
     db.query(q,[values], (err) =>{
@@ -27,14 +27,14 @@ export const addUser = (req,res) => {
     })
 }
  export const updateUser =(req,res) => {
-    const q = "UPDATE usuarios SET `nome` = ?, `email` = ?, `fone` = ?, `data_nascimento` = ? WHERE `id` = ?"
+    const q = "UPDATE usuarios SET `nome` = ?, `email` = ?, `fone` = ?, `data_nacimento` = ? WHERE `id` = ?"
     ;
 
     const values = [
         req.body.nome,
         req.body.email,
         req.body.fone,
-        req.body.data_nascimento,
+        req.body.data_nacimento,
     ]
 
     db.query(q, [...values, req.params.id], (err)=> {

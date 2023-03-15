@@ -48,7 +48,7 @@ const Form = ({getUsers,onEdit,setOnEdit}) => {
             user.nome.value = onEdit.nome;
             user.email.value = onEdit.email;
             user.fone.value = onEdit.fone;
-            user.data_nascimento.value = onEdit.data_nascimento;
+            user.data_nacimento.value = onEdit.data_nacimento;
         }
     }, [onEdit]);
 
@@ -59,20 +59,20 @@ const Form = ({getUsers,onEdit,setOnEdit}) => {
         !user.nome.value ||
         !user.email.value ||
         !user.fone.value ||
-        !user.data_nascimento.value
+        !user.data_nacimento.value
 
     ) {
         return toast.console.warn(("Preencha todos os campos!"));
     }
     if (onEdit) {
         await axios
-        .put("http://localhost:8800"/ + onEdit.id, {
+        .put("http://localhost:8800/" + onEdit.id, {
             nome:user.nome.value,
             email:user.email.value,
             fone:user.fone.value,
-            data_nascimento: user.data_nascimento.value
+            data_nacimento: user.data_nacimento.value
         })
-        .then(({data}) => toast.success(data))
+        .then(({data}) => console.log(data))
         .catch(({data}) => toast.error(data))
     } else {
         await axios
@@ -80,7 +80,7 @@ const Form = ({getUsers,onEdit,setOnEdit}) => {
             nome:user.nome.value,
             email: user.email.value,
             fone:user.fone.value,
-            data_nascimento: user.data_nascimento.value
+            data_nacimento: user.data_nacimento.value
         })
         .then(({data}) => console.log((data)))
         .catch(({data}) => console.log((data)))    
@@ -89,12 +89,7 @@ const Form = ({getUsers,onEdit,setOnEdit}) => {
     user.nome.value = ''
     user.email.value = ''
     user.fone.value  = ''
-    user.data_nascimento.value = ''
-
-
-    
-
-    
+    user.data_nacimento.value = ''
 
     setOnEdit(null)
     getUsers()
@@ -116,7 +111,7 @@ const Form = ({getUsers,onEdit,setOnEdit}) => {
             </InputArea>
             <InputArea>
                 <Label> Data de Nascimento</Label>
-                <Input name='data_nascimento' type="date"/>
+                <Input name='data_nacimento' type="date"/>
             </InputArea>
             <Button type="submit">SALVAR</Button>
         </FormContainer>     
